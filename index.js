@@ -11,13 +11,19 @@ const marvel = {
                 console.log(json, 'RES.JSON');
                 for (const hero of json.data.results) {
                     let urlHero = hero.urls[0].url;
+                    
+                const dateString = new Date(hero.modified);
+                const dateDia=dateString.getDate()+"-"+(dateString.getMonth()+1)+"-"+dateString.getFullYear();
+              
                     contentHtml += `
                 <div class="row-sm-3">                  
                     <div class="card" style="width: 18rem;">
                         <img   src="${hero.thumbnail.path}.${hero.thumbnail.extension}" class="card-img-top" alt="...">
                     <div class="card-body">
                          <h5 class="card-title">${hero.name}</h5>
-                         <a href="${urlHero}"  class="btn btn-primary">Ver más</a>
+                         <p> ${dateDia}</p>
+                         <p> ${hero.description}</p>
+                         <a href="${urlHero}"  class="btn btn-primary">Actualizar</a>
                      </div>
                     </div>
                 </div>
